@@ -5,7 +5,7 @@ pipeline {
         pollSCM ('* * * * *')
     }
     parameters {
-        choice(name:'MAVEN_GOAL' choices: ['package', 'install', 'clean'], description: 'maven-goal')
+        choice(name: 'MAVEN_GOAL', choices: ['package', 'install', 'clean'], description: 'MAVEN_GOAL')
     }
     stages { 
         stage('version control system') {
