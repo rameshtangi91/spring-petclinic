@@ -22,14 +22,14 @@ pipeline {
                 sh "mvn ${params.MAVEN_GOAL}"
             }
         }
-         stage('post build') {
+        stage('post build') {
             steps {
                 archiveArtifacts artifacts: '**/target/spring-petclinic-3.0.0-SNAPSHOT.jar',
                                  onlyIfSuccessful: true
                 junit testResults: '**/surefire-reports/TEST-*.xml'                 
             }
         }
-        stage('SonarQube analysis') {
+        stage('Sonar analysis') {
             withSonarQubeEnv('SONAR_CLOUD') {
                 sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jenkins2_sonar'
             }
