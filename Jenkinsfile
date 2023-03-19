@@ -29,5 +29,10 @@ pipeline {
                 junit testResults: '**/surefire-reports/TEST-*.xml'                 
             }
         }
+        stage('SonarQube analysis') {
+            withSonarQubeEnv('My SonarQube Server') {
+                sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jenkins2_sonar'
+            }
+        }
     }
 }
