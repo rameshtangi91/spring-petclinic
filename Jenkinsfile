@@ -30,7 +30,7 @@ pipeline {
             }
         }
         stage('SonarQube analysis') {
-            withSonarQubeEnv('My SonarQube Server') {
+            withSonarQubeEnv('SONAR_CLOUD') {
                 sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jenkins2_sonar'
             }
         }
