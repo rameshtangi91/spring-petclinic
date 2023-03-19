@@ -32,7 +32,7 @@ pipeline {
         stage('Sonar analysis') {
             steps {
                 withSonarQubeEnv('SONAR_CLOUD') {
-                    sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jenkins2_sonar'
+                    sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jenkins2_sonar -Dsonar.organization=jenkins2'
                 }
             }
         }    
